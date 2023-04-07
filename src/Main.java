@@ -1,44 +1,28 @@
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
 
-        List<Integer> linkedList = new ArrayList<>();
-        Random random = new Random();
+        MyList newList = new MyList();
 
-        for (int i = 0; i < 5; i ++){
-            linkedList.add(random.nextInt(1, 100));
-        }
+        newList.AddNode(new Node(5));
+        newList.AddNode(new Node(7));
+        newList.AddNode(new Node(51));
+        newList.AddNode(new Node(25));
+        newList.AddNode(new Node(53));
+        newList.AddNode(new Node(54));
 
-        System.out.println(linkedList);
+        System.out.println(newList);
 
-        MyList newList = new MyList(linkedList);
         Scanner scanner = new Scanner(System.in);
         System.out.println("1 - prev node, 2 - next node");
 
         while (true){
             System.out.print(">> ");
             int input = scanner.nextInt();
-            if (input == 1) {
-                if (newList.hasPrevNode(newList.getNode())) {
-                    newList.prevNode();
-                    System.out.print("Prev. node: ");
-                    newList.printNode(newList.getNode());
-                }
-            }
-            if (input == 2) {
-                if (newList.hasNextNode(newList.getNode())) {
-                    newList.nextNode();
-                    System.out.print("Next node: ");
-                    newList.printNode(newList.getNode());
-                }
-            }
+            if (input == 1) newList.prevElem();
+            if (input == 2) newList.nextElem();
         }
-
     }
-
 }

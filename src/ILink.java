@@ -1,8 +1,7 @@
 public interface ILink {
 
-    void nextNode();
-    void prevNode();
-    void printNode(int node);
-    boolean hasNextNode(int node);
-    boolean hasPrevNode(int node);
+    void nextNode(MyList myList);
+    void prevNode(MyList myList);
+    boolean hasNextNode(MyList myList);
+    boolean hasPrevNode(MyList myList);
 }

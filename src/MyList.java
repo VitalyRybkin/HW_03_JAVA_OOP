@@ -1,51 +1,36 @@
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
-public class MyList implements ILink {
+public class MyList {
 
-    private final List<Integer> myList;
+    public List<Node> myList = new ArrayList<>();
 
-    private int node = 0;
+    public int currentNode = 0;
 
-    public MyList(List<Integer> myList) {
-        this.myList = myList;
+    public void AddNode(Node node) {
+        this.myList.add(node);
     }
 
-    public List<Integer> getMyList() {
+    public List<Node> getMyList() {
         return myList;
     }
 
-    public int getNode() {
-        return node;
+
+    public void prevElem() {
+        Node node = this.getMyList().get(currentNode);
+        node.prevNode(this);
+    }
+
+    public void nextElem() {
+        Node node = this.getMyList().get(currentNode);
+        node.nextNode(this);
     }
 
     @Override
-    public void nextNode() {
-        this.node += 1;
+    public String toString() {
+        return Arrays.toString(this.getMyList().toArray());
     }
 
-    @Override
-    public void prevNode() {
-        this.node -= 1;
-    }
 
-    @Override
-    public void printNode(int node) {
-        System.out.println(this.getMyList().get(node));
-    }
-
-    @Override
-    public boolean hasNextNode(int node) {
-        if (node + 1 < this.getMyList().size())
-            return true;
-        System.out.println("End of list!");
-        return false;
-    }
-
-    @Override
-    public boolean hasPrevNode(int node) {
-        if (node - 1 > 0)
-            return true;
-        System.out.println("End of list!");
-        return false;
-    }
 }
